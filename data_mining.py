@@ -50,7 +50,7 @@ def pearson(user1, user2):
     xySum, xSum, ySum, x2Sum, y2Sum, n = 0,0,0,0,0,0
     for key in user1:
         if key in user2:
-            n += 1
+            n = n + 1
             xSum += user1[key]
             ySum += user2[key]
             xySum += user1[key]*user2[key]
