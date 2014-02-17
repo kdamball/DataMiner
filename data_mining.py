@@ -46,5 +46,22 @@ def recommend(user,others):
             bandsToRecommend.append(band)
     return bandsToRecommend
             
+def pearson(user1, user2):
+    xySum, xSum, ySum, x2Sum, y2Sum, n = 0,0,0,0,0,0
+    for key in user1:
+        if key in user2:
+            n += 1
+            xSum += user1[key]
+            ySum += user2[key]
+            xySum += user1[key]*user2[key]
+            x2Sum += user1[key]**2
+            y2Sum += user2[key]**2
+            denominator = sqrt(x2Sum - ((xSum**2)/n)) * sqrt(y2Sum - ((ySum**2)/n))
+    if denominator == 0 or n == 0:
+        return 0
+    else:
+        return (xySum - ((xSum*ySum)/n)) / denominator
+            
+    
 
 
