@@ -57,7 +57,7 @@ def pearson(user1, user2):
             x2Sum += user1[key]**2
             y2Sum += user2[key]**2
             denominator = sqrt(x2Sum - ((xSum**2)/n)) * sqrt(y2Sum - ((ySum**2)/n))
-    if denominator == 0 or n == 0:
+    if n == 0 or denominator == 0:
         return 0
     else:
         return (xySum - ((xSum*ySum)/n)) / denominator
