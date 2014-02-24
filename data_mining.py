@@ -1,5 +1,11 @@
 from math import sqrt
 
+"""
+    If there's grade inflation: use Pearson
+    If there are rarely non-zero attributes (and the magnitude of attributes is important), use Manhattan or Euclidean
+    If the data is sparse (lots of zero attributes), use Cosine Similarity
+"""
+
 users = {"Angelica": {"Blues Traveler": 3.5, "Broken Bells": 2.0, "Norah Jones": 4.5, "Phoenix": 5.0, "Slightly Stoopid": 1.5, "The Strokes": 2.5, "Vampire Weekend": 2.0},
          "Bill":{"Blues Traveler": 2.0, "Broken Bells": 3.5, "Deadmau5": 4.0, "Phoenix": 2.0, "Slightly Stoopid": 3.5, "Vampire Weekend": 3.0},
          "Chan": {"Blues Traveler": 5.0, "Broken Bells": 1.0, "Deadmau5": 1.0, "Norah Jones": 3.0, "Phoenix": 5, "Slightly Stoopid": 1.0},
@@ -61,7 +67,19 @@ def pearson(user1, user2):
         return 0
     else:
         return (xySum - ((xSum*ySum)/n)) / denominator
-            
+
+def cosSimilarity(user1, user2):
+    xy, xMag, yMag = 0,0,0
+    for key in user1:
+        xMag += user1[key]**2
+        if key in user2:
+            xy += user1[key]*user2[key]
+    for key in user2:
+        yMag += user2[key]**2
+    xMag = sqrt(xMag)
+    yMag = sqrt(yMag)
+    return xy/(xMag * yMag)
+    
     
 
 
