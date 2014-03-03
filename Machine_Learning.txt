@@ -1,0 +1,8 @@
+Machine Learning:
+
+- Supervised Learning:
+	- Regression problems: continuous values with aim at predicting where it will fall on the graph
+	- Classification problems: mostly with discrete values, determining where a value falls in.
+	
+- Unsupervised Learning:
+	- No structured/known clusters. You find the clusters yourself. 
