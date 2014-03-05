@@ -1,34 +1,34 @@
 ﻿Machine Learning:
 
 - Supervised Learning:
-	- Regression problems: continuous values with aim at predicting where it will fall on the graph
-	- Classification problems: mostly with discrete values, determining where a value falls in.
-	
+  - Regression problems: continuous values with aim at predicting where it will fall on the graph
+  - Classification problems: mostly with discrete values, determining where a value falls in.
+  
 - Unsupervised Learning:
-	- No structured/known clusters. You find the clusters yourself. E.g: finding similar news articles
-		on the web, clustering users in a database according to their preferences.
-	- Harder to know what exactly you're looking for
+  - No structured/known clusters. You find the clusters yourself. E.g: finding similar news articles
+    on the web, clustering users in a database according to their preferences.
+  - Harder to know what exactly you're looking for
 
-	
+  
 - Linear Regression:
-	- Form of Supervised learning - given a 'right answer' for each example in the data
-	- given data is also referred to as "Training set"
-		Notation: m - no. of training examples, x's - input vars/features, y's - output vars/target vars
-			(x,y)- one training example
-			Training set -> Learning algorithm -> Hypothesis(h); 
-			h maps from input x to estimated y
-			h(x) = thet0 + thet1x (simple linear graph);
-			best way to prediction is the one that reduces: h(x) - y
-			Cost Function:
-				One solution: minimize(thet0, thet1) = (0.5/n)*Sum(h(x*)-y*)^2 where * = range(0,n), n = no. of training sets
-					we are minimizing, so 0.5n is a constant - dividing by n to ensure we get an average (lots of sets vs few)
-				also known as square cost function. Used in most regression probs
-				Cost fn sually abbrev. by J(thet0, thet1)
-				J(thet1) looks like a quadratic function (under perfect conditions)
-				Mapping cost fn (J), thet0, & thet1 you get an inverted cone
-				Next step is finding an algorithm that calculates thet0 & thet1 to minimize the cost fn.
-				
-				
+  - Form of Supervised learning - given a 'right answer' for each example in the data
+  - given data is also referred to as "Training set"
+    Notation: m - no. of training examples, x's - input vars/features, y's - output vars/target vars
+      (x,y)- one training example
+      Training set -> Learning algorithm -> Hypothesis(h); 
+      h maps from input x to estimated y
+      h(x) = thet0 + thet1x (simple linear graph);
+      best way to prediction is the one that reduces: h(x) - y
+      Cost Function:
+        One solution: minimize(thet0, thet1) = (0.5/n)*Sum(h(x*)-y*)^2 where * = range(0,n), n = no. of training sets
+          we are minimizing, so 0.5n is a constant - dividing by n to ensure we get an average (lots of sets vs few)
+        also known as square cost function. Used in most regression probs
+        Cost fn sually abbrev. by J(thet0, thet1)
+        J(thet1) looks like a quadratic function (under perfect conditions)
+        Mapping cost fn (J), thet0, & thet1 you get an inverted cone
+        Next step is finding an algorithm that calculates thet0 & thet1 to minimize the cost fn.
+        
+        
 
 
 
