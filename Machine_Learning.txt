@@ -21,16 +21,41 @@
       best way to prediction is the one that reduces: h(x) - y
       Cost Function:
         One solution: minimize(thet0, thet1) = (0.5/n)*Sum(h(x*)-y*)^2 where * = range(0,n), n = no. of training sets
-          we are minimizing, so 0.5n is a constant - dividing by n to ensure we get an average (lots of sets vs few)
+         we are minimizing, so 0.5n is a constant - dividing by n to ensure we get an average (lots of sets vs few)
         also known as square cost function. Used in most regression probs
         Cost fn sually abbrev. by J(thet0, thet1)
         J(thet1) looks like a quadratic function (under perfect conditions)
         Mapping cost fn (J), thet0, & thet1 you get an inverted cone
         Next step is finding an algorithm that calculates thet0 & thet1 to minimize the cost fn.
-        
-        
+			Gradient Descent:
+        For minimizing Cost fn (used to minimize other fns too)
+				Initialize thet0 & thet1 both to 0.
+				Taking incremental steps from the initial position (looking for the lowest position around you).
+				Keep doing the same until you reach a local minimum
+				Algorithm: 
+					thet(j) := thet(j) - alpha(delta J(thet0,thet1)/delta(thet(j))); [for j=0 and j=1]
+						":=" -> assign LHS to RHS
+						alpha -> learning rate (How big a step we take)
+						delta -> partial derivatives for J(thet0,thet1)
+						[for j=0 & j=1] -> simultaneously update thet0 & thet1
+							temp0 = thet0 - alpha(...)
+							temp1 = thet1 - alpha(...)
+							thet0 = temp0
+							thet1 = temp1
+							NOT DOING this correctly (calculating, update, calculate, update) will lead to using unique J's
+								check the algorithm above
+						alpha is always positive (we are trying to reach the lowest local minimum)
+						remember, we don't care about the size of thet(j). Just the local minima.
+						If alpha is too small, we'll take too many steps. If it's too big, we'll risk passing the minima.
+						However, the slope (i.e partial deriv) helps to ensure thet(j) is updated appropriately when nearing
+							the minima (deriv gets smaller)
+				Combining the J(thet0,thet1) & h(x) into the Gradient Descent,
+					j=0 -> thet0 := thet0 - (alpha/n)(Sum(h(x*)-y*));
+					j=1 -> thet1 := thet1 - (alpha/n)(Sum((h(x*)-y*)(x*))); Don't forget to update simultaneously
+				Gradient descent always ends up being a convex function, i.e. only one global optima (no local minima)
+				'Batch' Grad. desc. means we are using all training sets (for this kind of linear regressions)
+				
 
 
 
-
-
+      
