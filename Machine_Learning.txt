@@ -5,4 +5,6 @@ Machine Learning:
 	- Classification problems: mostly with discrete values, determining where a value falls in.
 	
 - Unsupervised Learning:
-	- No structured/known clusters. You find the clusters yourself. 
+	- No structured/known clusters. You find the clusters yourself. E.g: finding similar news articles
+		on the web, clustering users in a database according to their preferences.
+	- Harder to know what exactly you're looking for
