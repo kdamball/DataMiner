@@ -42,7 +42,7 @@
 							temp1 = thet1 - alpha(...)
 							thet0 = temp0
 							thet1 = temp1
-							NOT DOING this correctly (calculating, update, calculate, update) will lead to using unique J's
+							NOT DOING this correctly (i.e: calculating, update, calculate, update) will lead to using unique J's
 								check the algorithm above
 						alpha is always positive (we are trying to reach the lowest local minimum)
 						remember, we don't care about the size of thet(j). Just the local minima.
@@ -55,7 +55,33 @@
 				Gradient descent always ends up being a convex function, i.e. only one global optima (no local minima)
 				'Batch' Grad. desc. means we are using all training sets (for this kind of linear regressions)
 				
+- Multiple Variables:
+	- Notation: x(i) = input of i-th training example
+		x(i)j = value of feature j in i-th training eg.
+		n = number of features
+		Hypothesis equation: h(x) = thet0 + thet1x1 + ... + thetnxn
+			For convenience: h(x) = thet(transpose)x
+				because, in matrix form, theta matrix transposed when multiplied with the matrix of x-values
+				will return the hypothesis equation.
+			
+	- Feature scaling:
+		For gradient descent of multiple variables, if plotting against two variables, the gradient descent
+		can take an extreme oval shape. This is due to significant variation in value of one variables compared
+		to the other. This usually leads to inefficiency when finding the optimum point (takes longer).Best
+		solution is to scale the values to be somewhat similar (e.g: dividing prices by thousands to get smaller
+		numbers).
+		Generally: get every feature to approximately -1 <= x <= 1 range (this is subjective!).
+		Mean normalization: 
+		Trying to get the features to have an average of 0. Max & min values sitting on either end
+			replace x with x - average
+				
+				
 
 
 
+				
+				
+				
+				
+				
       
