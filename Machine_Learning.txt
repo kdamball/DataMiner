@@ -77,7 +77,8 @@
 		Remember some important points:
 			- beware of the value of alpha:
 				you can set it to 0.001 - 0.003 - 0.01 - 0.03 - 0.1 => this way you are multiplying by 3 (roughly)
-			- You can play with variables. E.g: squaring the size of the house, etc etc just to see what model
+			- Polynomial Regression: 
+				You can play with variables. E.g: squaring the size of the house, etc etc just to see what model
 				you get and how well it can be used to predict the price.
 				
 				
