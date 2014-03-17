@@ -79,7 +79,13 @@ def cosSimilarity(user1, user2):
     xMag = sqrt(xMag)
     yMag = sqrt(yMag)
     return xy/(xMag * yMag)
+
     
-    
+"""
+    When classifying, we use training sets of data that is significantly larger than 
+    the testing data. Usually, statisticians split the data in 10 parts. Use each part
+    for testing once while using the other 9 parts for training. This system is called:
+    10-fold cross validation
+"""
 
 

@@ -80,7 +80,15 @@
 			- Polynomial Regression: 
 				You can play with variables. E.g: squaring the size of the house, etc etc just to see what model
 				you get and how well it can be used to predict the price.
-				
+- Normal Equation:
+	solves for the optimal theta directly.
+	theta = (X**trans * X)**inv * X**trans * y
+	No need for future scaling, choosing alpha nor need iterations when using this method (rivals Grad. Descent)
+	However, the method becomes extremely slow when dealing with a large n. X will be an n*n matrix
+	if n>10000, you might what to use Gradient descent.
+	
+	
+	
 				
 
 
