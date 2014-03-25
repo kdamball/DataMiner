@@ -23,7 +23,7 @@
         One solution: minimize(thet0, thet1) = (0.5/n)*Sum(h(x*)-y*)^2 where * = range(0,n), n = no. of training sets
          we are minimizing, so 0.5n is a constant - dividing by n to ensure we get an average (lots of sets vs few)
         also known as square cost function. Used in most regression probs
-        Cost fn sually abbrev. by J(thet0, thet1)
+        Cost fn usually abbrev. by J(thet0, thet1)
         J(thet1) looks like a quadratic function (under perfect conditions)
         Mapping cost fn (J), thet0, & thet1 you get an inverted cone
         Next step is finding an algorithm that calculates thet0 & thet1 to minimize the cost fn.
@@ -86,16 +86,35 @@
 	No need for feature scaling, choosing alpha nor need iterations when using this method (rivals Grad. Descent)
 	However, the method becomes extremely slow when dealing with a large n. X will be an n*n matrix
 	if n>10000, you might what to use Gradient descent.
+
+- Vectorization (factorization with vectors):
+	The best way to work with this type of data coding is to use vectors
+		eg: for the gradient descent code, 
+			thet0 := thet0 - (alpha/m)(Sum(h(x*)-y*))x0;
+			thet1 := thet1 - (alpha/m)(Sum(h(x*)-y*))x1;
+			thet2 := thet2 - (alpha/m)(Sum(h(x*)-y*))x2;
+			
+			You can summarize this to THETA := THETA - alpha[SUM_VECTOR]
+				where SUM_VECTOR is 1/m * Sum((h(x*)-y) * X) where X is a vector [x0, x1, ... ,xn]
 	
 	
 	
-				
-
-
-
-				
-				
-				
-				
-				
-      
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
