@@ -98,8 +98,17 @@
 				where SUM_VECTOR is 1/m * Sum((h(x*)-y) * X) where X is a vector [x0, x1, ... ,xn]
 	
 	
-	
-	
+Classification:
+	Deciding whether is true or false. Pass or fail. y is element of set {0,1}.
+	This is called binary/two class. It can be a multi-class classification.
+	Linear regression won't work well; extreme examples might provide a faulty hypothesis.
+	Logistic regression solves this problem; h(x) = g(theta' * X);.
+		where g is the logistic/Sigmoid fn. g(z) = 1/(1+e^-z)
+	h(x) in logistic reg is interpreted as the estimated probability that y=1 on input 'x'.
+		h(x) = p(y=1 | x=theta);
+	If h(x)>=0.5 then predict y = 1 (and vice versa for y=0). So using the logistic fn, theta'*X >=0
+		predicts y = 1 (and vice versa). It works to provide a decision boundary - a line that separates
+		the region where y=1 from the region where y=0.
 	
 	
 	
