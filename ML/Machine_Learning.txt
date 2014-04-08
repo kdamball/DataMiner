@@ -138,8 +138,36 @@ Classification:
 					gradient(1) = 2*(theta(1)-5)
 					gradient(2) = 2*(theta(2)-5)
 	
-	Logistic Reg for Multi-class classification:
-		
+	Logistic Reg for Multi-class classification (One vs All):
+		Eg: for weather classification (sunny, cloudy, rainy, snow), email tagging(friends, family, work etc)
+		Create a training set for one class (positive - 1) and treat the others are the same (negative - 0)
+		Training a log reg classifier for h(x) for each class 'i' to predict the probability that 'y = i' 
+		On a new input 'x', make prediction and pick class 'i' taht maximizes h(x). i.e max(h(x))
+		For 3 classes:
+			h(x) = P(y=i | x;theta) for (i = 1,2,3)
+			
+Regularization:
+	Overfitting:
+		Underfitting - when the algo doeesn't fit the training data very well. Mostly a result of bias
+		Overfitting - algo has a high variance. The cost fn may be zero but fails to generalize on new examples
+			It works for training set only. 
+		regularization helps esp. when there are lots of features.
+	Regularization give small values for features (small thetas). Gives a 'simpler' hypothesis. Less prone to
+		overfitting. 
+	regularization formula: 
+		J(theta) = 1/(2m) * Sum((h(x)-y)^2) + lambda*Sum(theta(j)^2);
+			where lambda controls the trade-off between fitting the training set well and keeping the theta small
+			 (ends up keeping the hypothesis smooth)
+			 If lambda is too large, we'll penalize theta[1], theta[2], theta[3].. which approximately make them
+				zero which will make h(x)= theta[0]. In the end, it won't even fit out training set (i.e underfitting)
+				
+	Regularization Linear Regression:
+		For grad. desc. theta[0] is updated separately from the rest because we penalize the rest but not theta[0]
+		Update on theta only reduces it by a small margin.
+			theta[j] := theta[j]*(1 - alpha(lambda/m)) - alpha/m * Sum(h(x)-y)*x[j]
+		For normal eqn:
+			theta = inv(X'*X + lambda*L)X'*y
+				where L is the identity matrix except the first element (I[1*1]) is 0 instead of 1.
 					
 						
 		
