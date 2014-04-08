@@ -112,6 +112,7 @@ Classification:
 	Non-linear decision boundaries:
 		You'll need to write even more complicated fn's for defining the decision boundaries. These aren't
 		to solve for h(x)
+		
 	Cost Function:
 		How do we choose theta?
 		From Linear reg, J(theta) = (1/m)Sum(0.5(h(x)-y)^2), could be represented by Cost(h(x),y)
@@ -128,6 +129,18 @@ Classification:
 				
 	Gradient Descent:
 		We want min(J(theta))
+		Some other optimization algos(aside from Grad. Desc.): 
+			Conjugate descent, BFGS & L-BFGS
+			example of advanced optimization algo:
+				function [jVal, gradient] = costFunction(theta)
+					jVal = (theta(1) - 5)^2 + (theta(2)-5)^2
+					gradient = zeros(2,1)
+					gradient(1) = 2*(theta(1)-5)
+					gradient(2) = 2*(theta(2)-5)
+	
+	Logistic Reg for Multi-class classification:
+		
+					
 						
 		
 		
