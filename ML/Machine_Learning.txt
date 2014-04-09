@@ -165,10 +165,21 @@ Regularization:
 		For grad. desc. theta[0] is updated separately from the rest because we penalize the rest but not theta[0]
 		Update on theta only reduces it by a small margin.
 			theta[j] := theta[j]*(1 - alpha(lambda/m)) - alpha/m * Sum(h(x)-y)*x[j]
+				where j = (1:n)
 		For normal eqn:
 			theta = inv(X'*X + lambda*L)X'*y
 				where L is the identity matrix except the first element (I[1*1]) is 0 instead of 1.
-					
+	
+	Regularization Logistic Regression:
+		Cost Fn:
+			J(theta) = -1*((1/m)*Sum(y*log(h(x)) + (1-y)log(1-h(x)))) + (lambda/2m)*Sum(theta[j]^2)
+				where j = (1:n) because we ignore theta[0]
+		Grad. Desc:
+			theta[0] := theta[0] - (alpha/m)*Sum(h(x) - y)*x[0]
+			theta[j] := theta[j] - (alpha/m)*(Sum(h(x) - y)*x[j] + lambda(theta[j]))
+	
+	Advanced optimization:
+		https://d396qusza40orc.cloudfront.net/ml/docs/slides/Lecture7.pdf
 						
 		
 		
