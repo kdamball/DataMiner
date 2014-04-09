@@ -176,7 +176,8 @@ Regularization:
 				where j = (1:n) because we ignore theta[0]
 		Grad. Desc:
 			theta[0] := theta[0] - (alpha/m)*Sum(h(x) - y)*x[0]
-			theta[j] := theta[j] - (alpha/m)*(Sum(h(x) - y)*x[j] + lambda(theta[j]))
+			theta[j] := theta[j] - alpha((m)*(Sum(h(x) - y)*x[j] - lambda(theta[j])))
+				where j = (1:n) ignoring the update for theta[0]
 	
 	Advanced optimization:
 		https://d396qusza40orc.cloudfront.net/ml/docs/slides/Lecture7.pdf
