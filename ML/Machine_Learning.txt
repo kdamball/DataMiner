@@ -142,13 +142,13 @@ Classification:
 		Eg: for weather classification (sunny, cloudy, rainy, snow), email tagging(friends, family, work etc)
 		Create a training set for one class (positive - 1) and treat the others are the same (negative - 0)
 		Training a log reg classifier for h(x) for each class 'i' to predict the probability that 'y = i' 
-		On a new input 'x', make prediction and pick class 'i' taht maximizes h(x). i.e max(h(x))
+		On a new input 'x', make prediction and pick class 'i' that maximizes h(x). i.e max(h(x))
 		For 3 classes:
 			h(x) = P(y=i | x;theta) for (i = 1,2,3)
 			
 Regularization:
 	Overfitting:
-		Underfitting - when the algo doeesn't fit the training data very well. Mostly a result of bias
+		Underfitting - when the algo doesn't fit the training data very well. Mostly a result of bias
 		Overfitting - algo has a high variance. The cost fn may be zero but fails to generalize on new examples
 			It works for training set only. 
 		regularization helps esp. when there are lots of features.
