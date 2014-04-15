@@ -182,8 +182,24 @@ Regularization:
 	Advanced optimization:
 		https://d396qusza40orc.cloudfront.net/ml/docs/slides/Lecture7.pdf
 						
-		
-		
+Neural Network:
+	Old idea that fell out of favour until a breakthrough in the 90s.
+	With more and more features, it gets complicated and becomes computationally expensive
+		e.g: analyzing grayscale images with 100*100 px dimensions will result in 10000 features.
+	Inspired by algorithms trying to mimic the brain.
+		- Brain does lots of things. However, there's a "One Learning Algorithm" hypothesis.
+			Brain when rewired can teach itself to interpret the new inputs.
+	Neural Model:
+		Inputs (i.e: x[1]..x[n]) that result in an output (e.g a logistic regression function)
+		Thetas are sometimes referred to as 'weights'.
+		Neural networks are several of these neural models.
+			Several layers with 'hidden layers' between input layer and output layer.
+			 a[i][j] = "activation" of unit 'i' in layer 'j'
+			 theta[j] = matrix of weights controlling fn mapping from layer 'j' to layer 'j+1'
+			 If a network has 's[j]' units in a layer 'j', 's[j+1]' units in layer 'j+1', then 'theta[j]'
+				will be of dimension '(s[j+1])*(s[j]+1)'
+			
+			
 	
 	
 	
