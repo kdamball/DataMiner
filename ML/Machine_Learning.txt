@@ -199,7 +199,7 @@ Neural Network:
 			 If a network has 's[j]' units in a layer 'j', 's[j+1]' units in layer 'j+1', then 'theta[j]'
 				will be of dimension '(s[j+1])*(s[j]+1)'
 		With hidden layers, the neural network learns its own features thru the hidden layer(s). In contrast,
-			Logistic Reg only allows the hypothesis to learn from inputs while. You also avoid using polynomial
+			Logistic Reg only allows the hypothesis to learn from inputs. You also avoid using polynomial
 			terms (e.g x1x2 etc)
 	Intuition:
 		Mostly for classifiers. One vs all.
