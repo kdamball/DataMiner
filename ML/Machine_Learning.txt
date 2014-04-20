@@ -203,9 +203,8 @@ Neural Network:
 			terms (e.g x1x2 etc)
 	Intuition:
 		Mostly for classifiers. One vs all.
-	
-	
-	Cost Function:
+		
+		--ADD THE PDF NOTES--
 		
 			
 			
