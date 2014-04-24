@@ -249,6 +249,11 @@ Neural Network:
 					Compute delta[L-1], delta[L-2], ... , delta[2]
 					Delta[i,j] := Delta[i,j] + a[j][l]*delta[i][l+1]
 					
+					Last line can be vectorized as: Delta[l] := Delta[l] + (delta[l+1]*a[l]')
+			To summarize: FP for 1st training example, then BP. Repeat the same process with the 2nd training example
+			Deltas are 'errors' are unit errors for activation values.
+			
+					
 				
 		
 			
