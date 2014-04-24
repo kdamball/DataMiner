@@ -204,7 +204,52 @@ Neural Network:
 	Intuition:
 		Mostly for classifiers. One vs all.
 		
-		--ADD THE PDF NOTES--
+		https://d396qusza40orc.cloudfront.net/ml/docs/slides/Lecture8.pdf
+			Use the link above for clearer insight!
+		
+	Neural Network Classification:
+		L = total no. of layers in network
+		S[l] = no. of units (excluding the bias unit) in layer 'l'
+		K = no. of output units
+		
+		Binary Classification:
+			1 output unit (K = 1)
+		Multi-class classification (K classes):
+			one vs all (K >= 3)
+		
+		Cost function:
+			Complete formula here: https://d396qusza40orc.cloudfront.net/ml/docs/slides/Lecture9.pdf
+			We need to minize the Cost fn.
+			Forward Propagation:
+				Given one training example (x,y) with 4 layers (K=4)
+					a[1] = x
+					z[2] = theta[1]*a[1]
+					a[2] = g(z[2]) ... add a_0[2]
+					z[3] = theta[2]*a[2]
+					a[3] = g(z[3]) ... add a_0[3]
+					z[4] = theta[3]*a[3]
+					a[4] = h_theta(x) = g(z[4])
+				We need to compute the derivative. We use Backpropagation (backprop)
+			Backpropagation algorithm:
+				delta[j][l] = 'error' of node 'j' in layer 'l'
+				For each output unit (layer L=4):
+					delta[j][4] = a[j][4] - y[j]
+						remember: a[j][4] = h(x)[j] .....check line 231 above
+					Delta[3] = (Theta[3]'*Delta[4]) .* g'(z[3])    ... "g'" is derivative of g (=a[3].*(1 - a[3]))
+					Delta[2] = (Theta[2]'*Delta[3]) .* g'(z[2])    ... "g'" is derivative of g (=a[2].*(1 - a[2]))
+						we don't use delta[1] because it's the input layer
+			
+			In general,
+				for training set {(x_1,y_1), ... , (x_m,y_m)} for 'm' examples
+				set Delta[i,j] = 0 (for all l,i,j) 			it will be used to calculate partial deriv of J(Theta)
+				For i = (1:m),
+					Set a[1] = x[i]
+					Perform forward propagation to computer for a[l] for l = (2:L)
+					Using y[i], compute delta[L] = a[L] - y[i]
+					Compute delta[L-1], delta[L-2], ... , delta[2]
+					Delta[i,j] := Delta[i,j] + a[j][l]*delta[i][l+1]
+					
+				
 		
 			
 			
