@@ -27,252 +27,252 @@
         J(thet1) looks like a quadratic function (under perfect conditions)
         Mapping cost fn (J), thet0, & thet1 you get an inverted cone
         Next step is finding an algorithm that calculates thet0 & thet1 to minimize the cost fn.
-			Gradient Descent:
+      Gradient Descent:
         For minimizing Cost fn (used to minimize other fns too)
-				Initialize thet0 & thet1 both to 0.
-				Taking incremental steps from the initial position (looking for the lowest position around you).
-				Keep doing the same until you reach a local minimum
-				Algorithm: 
-					thet(j) := thet(j) - alpha(delta J(thet0,thet1)/delta(thet(j))); [for j=0 and j=1]
-						":=" -> assign LHS to RHS
-						alpha -> learning rate (How big a step we take)
-						delta -> partial derivatives for J(thet0,thet1)
-						[for j=0 & j=1] -> simultaneously update thet0 & thet1
-							temp0 = thet0 - alpha(...)
-							temp1 = thet1 - alpha(...)
-							thet0 = temp0
-							thet1 = temp1
-							NOT DOING this correctly (i.e: calculating, update, calculate, update) will lead to using unique J's
-								check the algorithm above
-						alpha is always positive (we are trying to reach the lowest local minimum)
-						remember, we don't care about the size of thet(j). Just the local minima.
-						If alpha is too small, we'll take too many steps. If it's too big, we'll risk passing the minima.
-						However, the slope (i.e partial deriv) helps to ensure thet(j) is updated appropriately when nearing
-							the minima (deriv gets smaller)
-				Combining the J(thet0,thet1) & h(x) into the Gradient Descent,
-					j=0 -> thet0 := thet0 - (alpha/n)(Sum(h(x*)-y*));
-					j=1 -> thet1 := thet1 - (alpha/n)(Sum((h(x*)-y*)(x*))); Don't forget to update simultaneously
-				Gradient descent always ends up being a convex function, i.e. only one global optima (no local minima)
-				'Batch' Grad. desc. means we are using all training sets (for this kind of linear regressions)
-				
+        Initialize thet0 & thet1 both to 0.
+        Taking incremental steps from the initial position (looking for the lowest position around you).
+        Keep doing the same until you reach a local minimum
+        Algorithm: 
+          thet(j) := thet(j) - alpha(delta J(thet0,thet1)/delta(thet(j))); [for j=0 and j=1]
+            ":=" -> assign LHS to RHS
+            alpha -> learning rate (How big a step we take)
+            delta -> partial derivatives for J(thet0,thet1)
+            [for j=0 & j=1] -> simultaneously update thet0 & thet1
+              temp0 = thet0 - alpha(...)
+              temp1 = thet1 - alpha(...)
+              thet0 = temp0
+              thet1 = temp1
+              NOT DOING this correctly (i.e: calculating, update, calculate, update) will lead to using unique J's
+                check the algorithm above
+            alpha is always positive (we are trying to reach the lowest local minimum)
+            remember, we don't care about the size of thet(j). Just the local minima.
+            If alpha is too small, we'll take too many steps. If it's too big, we'll risk passing the minima.
+            However, the slope (i.e partial deriv) helps to ensure thet(j) is updated appropriately when nearing
+              the minima (deriv gets smaller)
+        Combining the J(thet0,thet1) & h(x) into the Gradient Descent,
+          j=0 -> thet0 := thet0 - (alpha/n)(Sum(h(x*)-y*));
+          j=1 -> thet1 := thet1 - (alpha/n)(Sum((h(x*)-y*)(x*))); Don't forget to update simultaneously
+        Gradient descent always ends up being a convex function, i.e. only one global optima (no local minima)
+        'Batch' Grad. desc. means we are using all training sets (for this kind of linear regressions)
+        
 - Multiple Variables:
-	- Notation: x(i) = input of i-th training example
-		x(i)j = value of feature j in i-th training eg.
-		n = number of features
-		Hypothesis equation: h(x) = thet0 + thet1x1 + ... + thetnxn
-			For convenience: h(x) = thet(transpose)x
-				because, in matrix form, theta matrix transposed when multiplied with the matrix of x-values
-				will return the hypothesis equation.
-			
-	- Feature scaling:
-		For gradient descent of multiple variables, if plotting against two variables, the gradient descent
-		can take an extreme oval shape. This is due to significant variation in value of one variables compared
-		to the other. This usually leads to inefficiency when finding the optimum point (takes longer).Best
-		solution is to scale the values to be somewhat similar (e.g: dividing prices by thousands to get smaller
-		numbers).
-		Generally: get every feature to approximately -1 <= x <= 1 range (this is subjective!).
-		Mean normalization: 
-		Trying to get the features to have an average of 0. Max & min values sitting on either end
-			replace x with x - average
-		Remember some important points:
-			- beware of the value of alpha:
-				you can set it to 0.001 - 0.003 - 0.01 - 0.03 - 0.1 => this way you are multiplying by 3 (roughly)
-			- Polynomial Regression: 
-				You can play with variables. E.g: squaring the size of the house, etc etc just to see what model
-				you get and how well it can be used to predict the price.
+  - Notation: x(i) = input of i-th training example
+    x(i)j = value of feature j in i-th training eg.
+    n = number of features
+    Hypothesis equation: h(x) = thet0 + thet1x1 + ... + thetnxn
+      For convenience: h(x) = thet(transpose)x
+        because, in matrix form, theta matrix transposed when multiplied with the matrix of x-values
+        will return the hypothesis equation.
+      
+  - Feature scaling:
+    For gradient descent of multiple variables, if plotting against two variables, the gradient descent
+    can take an extreme oval shape. This is due to significant variation in value of one variables compared
+    to the other. This usually leads to inefficiency when finding the optimum point (takes longer).Best
+    solution is to scale the values to be somewhat similar (e.g: dividing prices by thousands to get smaller
+    numbers).
+    Generally: get every feature to approximately -1 <= x <= 1 range (this is subjective!).
+    Mean normalization: 
+    Trying to get the features to have an average of 0. Max & min values sitting on either end
+      replace x with x - average
+    Remember some important points:
+      - beware of the value of alpha:
+        you can set it to 0.001 - 0.003 - 0.01 - 0.03 - 0.1 => this way you are multiplying by 3 (roughly)
+      - Polynomial Regression: 
+        You can play with variables. E.g: squaring the size of the house, etc etc just to see what model
+        you get and how well it can be used to predict the price.
 - Normal Equation:
-	solves for the optimal theta directly.
-	theta = (X**trans * X)**inv * X**trans * y
-	No need for feature scaling, choosing alpha nor need iterations when using this method (rivals Grad. Descent)
-	However, the method becomes extremely slow when dealing with a large n. X will be an n*n matrix
-	if n>10000, you might what to use Gradient descent.
+  solves for the optimal theta directly.
+  theta = (X**trans * X)**inv * X**trans * y
+  No need for feature scaling, choosing alpha nor need iterations when using this method (rivals Grad. Descent)
+  However, the method becomes extremely slow when dealing with a large n. X will be an n*n matrix
+  if n>10000, you might what to use Gradient descent.
 
 - Vectorization (factorization with vectors):
-	The best way to work with this type of data coding is to use vectors
-		eg: for the gradient descent code, 
-			thet0 := thet0 - (alpha/m)(Sum(h(x*)-y*))x0;
-			thet1 := thet1 - (alpha/m)(Sum(h(x*)-y*))x1;
-			thet2 := thet2 - (alpha/m)(Sum(h(x*)-y*))x2;
-			
-			You can summarize this to THETA := THETA - alpha[SUM_VECTOR]
-				where SUM_VECTOR is 1/m * Sum((h(x*)-y) * X) where X is a vector [x0, x1, ... ,xn]
-	
-	
+  The best way to work with this type of data coding is to use vectors
+    eg: for the gradient descent code, 
+      thet0 := thet0 - (alpha/m)(Sum(h(x*)-y*))x0;
+      thet1 := thet1 - (alpha/m)(Sum(h(x*)-y*))x1;
+      thet2 := thet2 - (alpha/m)(Sum(h(x*)-y*))x2;
+      
+      You can summarize this to THETA := THETA - alpha[SUM_VECTOR]
+        where SUM_VECTOR is 1/m * Sum((h(x*)-y) * X) where X is a vector [x0, x1, ... ,xn]
+  
+  
 Classification:
-	Deciding whether is true or false. Pass or fail. y is element of set {0,1}.
-	This is called binary/two class. It can be a multi-class classification.
-	Linear regression won't work well; extreme examples might provide a faulty hypothesis.
-	Logistic regression solves this problem; h(x) = g(theta' * X);.
-		where g is the logistic/Sigmoid fn. g(z) = 1/(1+e^-z)
-	h(x) in logistic reg is interpreted as the estimated probability that y=1 on input 'x'.
-		h(x) = p(y=1 | x=theta);
-	If h(x)>=0.5 then predict y = 1 (and vice versa for y=0). So using the logistic fn, theta'*X >=0
-		predicts y = 1 (and vice versa). It works to provide a decision boundary - a line that separates
-		the region where y=1 from the region where y=0.
-	Non-linear decision boundaries:
-		You'll need to write even more complicated fn's for defining the decision boundaries. These aren't
-		to solve for h(x)
-		
-	Cost Function:
-		How do we choose theta?
-		From Linear reg, J(theta) = (1/m)Sum(0.5(h(x)-y)^2), could be represented by Cost(h(x),y)
-			Cost(h(x),y) = 0.5(h(x)-y)^2
-		So logistic reg cost fn:
-											{-log(h(x))    if y=1
-			Cost(h(x),y) =	{
-											{-log(1-h(x))  if y=0
-						
-						This ensures that cost fn is 0 when h(x) = y
-							If h(x)-> (1-y) then Cost -> infinity; to punish learning algorithm (h(x) deviating from y)
-			J(theta) = (1/m)Sum(Cost(h(x),y)) = -(1/m)Sum(ylog(h(x)) + (1-y)*log(1-h(x)))
-				This summarizes the Cost(h(x),y) for y=1 or y=0 from above.
-				
-	Gradient Descent:
-		We want min(J(theta))
-		Some other optimization algos(aside from Grad. Desc.): 
-			Conjugate descent, BFGS & L-BFGS
-			example of advanced optimization algo:
-				function [jVal, gradient] = costFunction(theta)
-					jVal = (theta(1) - 5)^2 + (theta(2)-5)^2
-					gradient = zeros(2,1)
-					gradient(1) = 2*(theta(1)-5)
-					gradient(2) = 2*(theta(2)-5)
-	
-	Logistic Reg for Multi-class classification (One vs All):
-		Eg: for weather classification (sunny, cloudy, rainy, snow), email tagging(friends, family, work etc)
-		Create a training set for one class (positive - 1) and treat the others are the same (negative - 0)
-		Training a log reg classifier for h(x) for each class 'i' to predict the probability that 'y = i' 
-		On a new input 'x', make prediction and pick class 'i' that maximizes h(x). i.e max(h(x))
-		For 3 classes:
-			h(x) = P(y=i | x;theta) for (i = 1,2,3)
-			
+  Deciding whether is true or false. Pass or fail. y is element of set {0,1}.
+  This is called binary/two class. It can be a multi-class classification.
+  Linear regression won't work well; extreme examples might provide a faulty hypothesis.
+  Logistic regression solves this problem; h(x) = g(theta' * X);.
+    where g is the logistic/Sigmoid fn. g(z) = 1/(1+e^-z)
+  h(x) in logistic reg is interpreted as the estimated probability that y=1 on input 'x'.
+    h(x) = p(y=1 | x=theta);
+  If h(x)>=0.5 then predict y = 1 (and vice versa for y=0). So using the logistic fn, theta'*X >=0
+    predicts y = 1 (and vice versa). It works to provide a decision boundary - a line that separates
+    the region where y=1 from the region where y=0.
+  Non-linear decision boundaries:
+    You'll need to write even more complicated fn's for defining the decision boundaries. These aren't
+    to solve for h(x)
+    
+  Cost Function:
+    How do we choose theta?
+    From Linear reg, J(theta) = (1/m)Sum(0.5(h(x)-y)^2), could be represented by Cost(h(x),y)
+      Cost(h(x),y) = 0.5(h(x)-y)^2
+    So logistic reg cost fn:
+                      {-log(h(x))    if y=1
+      Cost(h(x),y) =  {
+                      {-log(1-h(x))  if y=0
+            
+            This ensures that cost fn is 0 when h(x) = y
+              If h(x)-> (1-y) then Cost -> infinity; to punish learning algorithm (h(x) deviating from y)
+      J(theta) = (1/m)Sum(Cost(h(x),y)) = -(1/m)Sum(ylog(h(x)) + (1-y)*log(1-h(x)))
+        This summarizes the Cost(h(x),y) for y=1 or y=0 from above.
+        
+  Gradient Descent:
+    We want min(J(theta))
+    Some other optimization algos(aside from Grad. Desc.): 
+      Conjugate descent, BFGS & L-BFGS
+      example of advanced optimization algo:
+        function [jVal, gradient] = costFunction(theta)
+          jVal = (theta(1) - 5)^2 + (theta(2)-5)^2
+          gradient = zeros(2,1)
+          gradient(1) = 2*(theta(1)-5)
+          gradient(2) = 2*(theta(2)-5)
+  
+  Logistic Reg for Multi-class classification (One vs All):
+    Eg: for weather classification (sunny, cloudy, rainy, snow), email tagging(friends, family, work etc)
+    Create a training set for one class (positive - 1) and treat the others are the same (negative - 0)
+    Training a log reg classifier for h(x) for each class 'i' to predict the probability that 'y = i' 
+    On a new input 'x', make prediction and pick class 'i' that maximizes h(x). i.e max(h(x))
+    For 3 classes:
+      h(x) = P(y=i | x;theta) for (i = 1,2,3)
+      
 Regularization:
-	Overfitting:
-		Underfitting - when the algo doesn't fit the training data very well. Mostly a result of bias
-		Overfitting - algo has a high variance. The cost fn may be zero but fails to generalize on new examples
-			It works for training set only. 
-		regularization helps esp. when there are lots of features.
-	Regularization give small values for features (small thetas). Gives a 'simpler' hypothesis. Less prone to
-		overfitting. 
-	regularization formula: 
-		J(theta) = 1/(2m) * Sum((h(x)-y)^2) + lambda*Sum(theta(j)^2);
-			where lambda controls the trade-off between fitting the training set well and keeping the theta small
-			 (ends up keeping the hypothesis smooth)
-			 If lambda is too large, we'll penalize theta[1], theta[2], theta[3].. which approximately make them
-				zero which will make h(x)= theta[0]. In the end, it won't even fit out training set (i.e underfitting)
-				
-	Regularization Linear Regression:
-		For grad. desc. theta[0] is updated separately from the rest because we penalize the rest but not theta[0]
-		Update on theta only reduces it by a small margin.
-			theta[j] := theta[j]*(1 - alpha(lambda/m)) - alpha/m * Sum(h(x)-y)*x[j]
-				where j = (1:n)
-		For normal eqn:
-			theta = inv(X'*X + lambda*L)X'*y
-				where L is the identity matrix except the first element (I[1*1]) is 0 instead of 1.
-	
-	Regularization Logistic Regression:
-		Cost Fn:
-			J(theta) = -1*((1/m)*Sum(y*log(h(x)) + (1-y)log(1-h(x)))) + (lambda/2m)*Sum(theta[j]^2)
-				where j = (1:n) because we ignore theta[0]
-		Grad. Desc:
-			theta[0] := theta[0] - (alpha/m)*Sum(h(x) - y)*x[0]
-			theta[j] := theta[j] - alpha((m)*(Sum(h(x) - y)*x[j] - lambda(theta[j])))
-				where j = (1:n) ignoring the update for theta[0]
-	
-	Advanced optimization:
-		https://d396qusza40orc.cloudfront.net/ml/docs/slides/Lecture7.pdf
-						
+  Overfitting:
+    Underfitting - when the algo doesn't fit the training data very well. Mostly a result of bias
+    Overfitting - algo has a high variance. The cost fn may be zero but fails to generalize on new examples
+      It works for training set only. 
+    regularization helps esp. when there are lots of features.
+  Regularization give small values for features (small thetas). Gives a 'simpler' hypothesis. Less prone to
+    overfitting. 
+  regularization formula: 
+    J(theta) = 1/(2m) * Sum((h(x)-y)^2) + lambda*Sum(theta(j)^2);
+      where lambda controls the trade-off between fitting the training set well and keeping the theta small
+       (ends up keeping the hypothesis smooth)
+       If lambda is too large, we'll penalize theta[1], theta[2], theta[3].. which approximately make them
+        zero which will make h(x)= theta[0]. In the end, it won't even fit out training set (i.e underfitting)
+        
+  Regularization Linear Regression:
+    For grad. desc. theta[0] is updated separately from the rest because we penalize the rest but not theta[0]
+    Update on theta only reduces it by a small margin.
+      theta[j] := theta[j]*(1 - alpha(lambda/m)) - alpha/m * Sum(h(x)-y)*x[j]
+        where j = (1:n)
+    For normal eqn:
+      theta = inv(X'*X + lambda*L)X'*y
+        where L is the identity matrix except the first element (I[1*1]) is 0 instead of 1.
+  
+  Regularization Logistic Regression:
+    Cost Fn:
+      J(theta) = -1*((1/m)*Sum(y*log(h(x)) + (1-y)log(1-h(x)))) + (lambda/2m)*Sum(theta[j]^2)
+        where j = (1:n) because we ignore theta[0]
+    Grad. Desc:
+      theta[0] := theta[0] - (alpha/m)*Sum(h(x) - y)*x[0]
+      theta[j] := theta[j] - alpha((m)*(Sum(h(x) - y)*x[j] - lambda(theta[j])))
+        where j = (1:n) ignoring the update for theta[0]
+  
+  Advanced optimization:
+    https://d396qusza40orc.cloudfront.net/ml/docs/slides/Lecture7.pdf
+            
 Neural Network:
-	Old idea that fell out of favour until a breakthrough in the 90s.
-	With more and more features, it gets complicated and becomes computationally expensive
-		e.g: analyzing grayscale images with 100*100 px dimensions will result in 10000 features.
-	Inspired by algorithms trying to mimic the brain.
-		- Brain does lots of things. However, there's a "One Learning Algorithm" hypothesis.
-			Brain when rewired can teach itself to interpret the new inputs.
-	Neural Model:
-		Inputs (i.e: x[1]..x[n]) that result in an output (e.g a logistic regression function)
-		Thetas are sometimes referred to as 'weights'.
-		Neural networks are several of these neural models.
-			Several layers with 'hidden layers' between input layer and output layer.
-			 a[i][j] = "activation" of unit 'i' in layer 'j'
-			 theta[j] = matrix of weights controlling fn mapping from layer 'j' to layer 'j+1'
-			 If a network has 's[j]' units in a layer 'j', 's[j+1]' units in layer 'j+1', then 'theta[j]'
-				will be of dimension '(s[j+1])*(s[j]+1)'
-		With hidden layers, the neural network learns its own features thru the hidden layer(s). In contrast,
-			Logistic Reg only allows the hypothesis to learn from inputs. You also avoid using polynomial
-			terms (e.g x1x2 etc)
-	Intuition:
-		Mostly for classifiers. One vs all.
-		
-		https://d396qusza40orc.cloudfront.net/ml/docs/slides/Lecture8.pdf
-			Use the link above for clearer insight!
-		
-	Neural Network Classification:
-		L = total no. of layers in network
-		S[l] = no. of units (excluding the bias unit) in layer 'l'
-		K = no. of output units
-		
-		Binary Classification:
-			1 output unit (K = 1)
-		Multi-class classification (K classes):
-			one vs all (K >= 3)
-		
-		Cost function:
-			Complete formula here: https://d396qusza40orc.cloudfront.net/ml/docs/slides/Lecture9.pdf
-			We need to minize the Cost fn.
-			Forward Propagation:
-				Given one training example (x,y) with 4 layers (K=4)
-					a[1] = x
-					z[2] = theta[1]*a[1]
-					a[2] = g(z[2]) ... add a_0[2]
-					z[3] = theta[2]*a[2]
-					a[3] = g(z[3]) ... add a_0[3]
-					z[4] = theta[3]*a[3]
-					a[4] = h_theta(x) = g(z[4])
-				We need to compute the derivative. We use Backpropagation (backprop)
-			Backpropagation algorithm:
-				delta[j][l] = 'error' of node 'j' in layer 'l'
-				For each output unit (layer L=4):
-					delta[j][4] = a[j][4] - y[j]
-						remember: a[j][4] = h(x)[j] .....check line 231 above
-					Delta[3] = (Theta[3]'*Delta[4]) .* g'(z[3])    ... "g'" is derivative of g (=a[3].*(1 - a[3]))
-					Delta[2] = (Theta[2]'*Delta[3]) .* g'(z[2])    ... "g'" is derivative of g (=a[2].*(1 - a[2]))
-						we don't use delta[1] because it's the input layer
-			
-			In general,
-				for training set {(x_1,y_1), ... , (x_m,y_m)} for 'm' examples
-				set Delta[i,j] = 0 (for all l,i,j) 			it will be used to calculate partial deriv of J(Theta)
-				For i = (1:m),
-					Set a[1] = x[i]
-					Perform forward propagation to computer for a[l] for l = (2:L)
-					Using y[i], compute delta[L] = a[L] - y[i]
-					Compute delta[L-1], delta[L-2], ... , delta[2]
-					Delta[i,j] := Delta[i,j] + a[j][l]*delta[i][l+1]
-					
-					Last line can be vectorized as: Delta[l] := Delta[l] + (delta[l+1]*a[l]')
-			To summarize: FP for 1st training example, then BP. Repeat the same process with the 2nd training example
-			Deltas are 'errors' are unit errors for activation values.
-			
-					
-				
-		
-			
-			
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+  Old idea that fell out of favour until a breakthrough in the 90s.
+  With more and more features, it gets complicated and becomes computationally expensive
+    e.g: analyzing grayscale images with 100*100 px dimensions will result in 10000 features.
+  Inspired by algorithms trying to mimic the brain.
+    - Brain does lots of things. However, there's a "One Learning Algorithm" hypothesis.
+      Brain when rewired can teach itself to interpret the new inputs.
+  Neural Model:
+    Inputs (i.e: x[1]..x[n]) that result in an output (e.g a logistic regression function)
+    Thetas are sometimes referred to as 'weights'.
+    Neural networks are several of these neural models.
+      Several layers with 'hidden layers' between input layer and output layer.
+       a[i][j] = "activation" of unit 'i' in layer 'j'
+       theta[j] = matrix of weights controlling fn mapping from layer 'j' to layer 'j+1'
+       If a network has 's[j]' units in a layer 'j', 's[j+1]' units in layer 'j+1', then 'theta[j]'
+        will be of dimension '(s[j+1])*(s[j]+1)'
+    With hidden layers, the neural network learns its own features thru the hidden layer(s). In contrast,
+      Logistic Reg only allows the hypothesis to learn from inputs. You also avoid using polynomial
+      terms (e.g x1x2 etc)
+  Intuition:
+    Mostly for classifiers. One vs all.
+    
+    https://d396qusza40orc.cloudfront.net/ml/docs/slides/Lecture8.pdf
+      Use the link above for clearer insight!
+    
+  Neural Network Classification:
+    L = total no. of layers in network
+    S[l] = no. of units (excluding the bias unit) in layer 'l'
+    K = no. of output units
+    
+    Binary Classification:
+      1 output unit (K = 1)
+    Multi-class classification (K classes):
+      one vs all (K >= 3)
+    
+    Cost function:
+      Complete formula here: https://d396qusza40orc.cloudfront.net/ml/docs/slides/Lecture9.pdf
+      We need to minize the Cost fn.
+      Forward Propagation:
+        Given one training example (x,y) with 4 layers (K=4)
+          a[1] = x
+          z[2] = theta[1]*a[1]
+          a[2] = g(z[2]) ... add a_0[2]
+          z[3] = theta[2]*a[2]
+          a[3] = g(z[3]) ... add a_0[3]
+          z[4] = theta[3]*a[3]
+          a[4] = h_theta(x) = g(z[4])
+        We need to compute the derivative. We use Backpropagation (backprop)
+      Backpropagation algorithm:
+        delta[j][l] = 'error' of node 'j' in layer 'l'
+        For each output unit (layer L=4):
+          delta[j][4] = a[j][4] - y[j]
+            remember: a[j][4] = h(x)[j] .....check line 231 above
+          Delta[3] = (Theta[3]'*Delta[4]) .* g'(z[3])    ... "g'" is derivative of g (=a[3].*(1 - a[3]))
+          Delta[2] = (Theta[2]'*Delta[3]) .* g'(z[2])    ... "g'" is derivative of g (=a[2].*(1 - a[2]))
+            we don't use delta[1] because it's the input layer
+      
+      In general,
+        for training set {(x_1,y_1), ... , (x_m,y_m)} for 'm' examples
+        set Delta[i,j] = 0 (for all l,i,j)       it will be used to calculate partial deriv of J(Theta)
+        For i = (1:m),
+          Set a[1] = x[i]
+          Perform forward propagation to computer for a[l] for l = (2:L)
+          Using y[i], compute delta[L] = a[L] - y[i]
+          Compute delta[L-1], delta[L-2], ... , delta[2]
+          Delta[i,j] := Delta[i,j] + a[j][l]*delta[i][l+1]
+          
+          Last line can be vectorized as: Delta[l] := Delta[l] + (delta[l+1]*a[l]')
+      To summarize: FP for 1st training example, then BP. Repeat the same process with the 2nd training example
+      Deltas are 'errors' are unit errors for activation values.
+      
+          
+        
+    
+      
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
