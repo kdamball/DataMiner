@@ -252,6 +252,18 @@ Neural Network:
           Last line can be vectorized as: Delta[l] := Delta[l] + (delta[l+1]*a[l]')
       To summarize: FP for 1st training example, then BP. Repeat the same process with the 2nd training example
       Deltas are 'errors' are unit errors for activation values.
+			
+			For optimization, we usually use vectors in previous cases. However, in ANN, we end up with matrices.
+				We need to "unroll" the matrices into vectors. 
+				eg: Theta1, Theta2 & Theta3 being matrices where s1=10 s2=11 s3=1,
+					thetaVec = [Theta1(:); Theta2(:); Theta3(:)] //this unrolls the matrices
+				To get the vectors back
+					Theta1 = reshape(thetaVec(1:110), 10, 11);
+					Theta2 = reshape(thetaVec(111:220), 10, 11);
+					Theta3 = reshape(thetaVec(221:231), 1, 11);
+					
+		Gradient Checking:
+			
       
           
         
