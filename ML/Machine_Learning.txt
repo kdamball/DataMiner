@@ -252,39 +252,81 @@ Neural Network:
           Last line can be vectorized as: Delta[l] := Delta[l] + (delta[l+1]*a[l]')
       To summarize: FP for 1st training example, then BP. Repeat the same process with the 2nd training example
       Deltas are 'errors' are unit errors for activation values.
-			
-			For optimization, we usually use vectors in previous cases. However, in ANN, we end up with matrices.
-				We need to "unroll" the matrices into vectors. 
-				eg: Theta1, Theta2 & Theta3 being matrices where s1=10 s2=11 s3=1,
-					thetaVec = [Theta1(:); Theta2(:); Theta3(:)] //this unrolls the matrices
-				To get the vectors back
-					Theta1 = reshape(thetaVec(1:110), 10, 11);
-					Theta2 = reshape(thetaVec(111:220), 10, 11);
-					Theta3 = reshape(thetaVec(221:231), 1, 11);
-					
-		Gradient Checking:
-			
       
+      For optimization, we usually use vectors in previous cases. However, in ANN, we end up with matrices.
+        We need to "unroll" the matrices into vectors. 
+        eg: Theta1, Theta2 & Theta3 being matrices where s1=10 s2=11 s3=1,
+          thetaVec = [Theta1(:); Theta2(:); Theta3(:)] //this unrolls the matrices
+        To get the vectors back
+          Theta1 = reshape(thetaVec(1:110), 10, 11);
+          Theta2 = reshape(thetaVec(111:220), 10, 11);
+          Theta3 = reshape(thetaVec(221:231), 1, 11);
           
-        
+    Gradient Checking:
+      Backprop will sometimes leads to bug that are hard to detect. Usually because it seems to be working
+        but it's not working at the best of its ability.
+      Gradient checking solves this. 
+      Implement:
+        gradientApprox = (J(theta+epsilon) - J(theta-epsilon))/(2*epsilon)
+      Parameter vector 'theta' could be 'unrolled':
+        partial derivatives could be done for each parameter of vector theta.
+          i.e: d(J(theta))/d(theta[i]) = J(theta[i]+eps)-J(theta[i]-eps)/(2*eps) where i=(1:n)
+      Finally, check whether gradientApprox == DVec
+        DVec is from the original backprop.
+      If they're similar, then backprop is working efficiently. If not, you messed up!
+      
+    Implementation note:
+      - Implement backprop to compute DVec (unrolled D[1], D[2], D[3])
+      - Implement gradient check to compute gradientApprox
+      - Make sure they're similar values
+      - Turn off gradient checking. Use backprop code for learning
+      PS: Make sure you turn off, grad checking. Or the code will be super slow!
     
-      
-      
+    Random Initialization:
+      Initial value of Theta:
+        We need initial theta for grad desc or advanced optimization
+        If you initialize theta = zero(i,j)
+          then all a[i][j] will be equal and so will all deltas.
+          In the end, all hidden layers will be the same and avoid learning alternative features.
+        Random initializations break this chain.
+          You initialize each theta[i][j] to be a value between (-eps:eps)
+          e.g: Theta1 = rand(10,11)*(2*init_eps) - init_eps 
+            where rand(10,11) is a random 10*11 matrix with values between (0,1)
   
+  Summary:
+    - Pick an architecture: Input & output units are fixed. Most common is one hidden layer.
+      If more than one hidden layer, usually you have the same no. of hidden units in each layer.
+      More hidden units means it's more computational expensive. 
+    - Random initialize weights
+    - Implement forward prop to get h(x) for any x
+    - Implement code to computer Cost fn (J(theta))
+    - Implement backprop to compute partial derivatives 
+      for i=1:m,
+        perform forward prop and backprop using example (x[i],y[i])
+        Get activations a[l] and delta terms for l=1:L
+    - Use grad check to compare partial derivs from backprop to the numerical estimate of grad desc.
+      then disable grad check
+    - Use grad desc. or advanced optimization method with backprop to try to minimize J(theta) as a
+      function of parameters Theta
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
