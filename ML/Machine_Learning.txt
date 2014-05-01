@@ -308,12 +308,6 @@ Neural Network:
       then disable grad check
     - Use grad desc. or advanced optimization method with backprop to try to minimize J(theta) as a
       function of parameters Theta
-  
-
-
-
-
-
 
 
 
