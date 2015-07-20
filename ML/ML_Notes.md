@@ -1,5 +1,6 @@
-# WEEK1
-Supervised vs Unsupervised Learning.
+## WEEK 1
+
+**Supervised vs Unsupervised Learning.**
   - Supervised: Giving data with "right answers" given (algorithm produces more of these "right answers")
     - Think of them as regression problems. (Predicting house prices, malignant tumors (cancer))
     - Classification problems
@@ -8,6 +9,13 @@ Supervised vs Unsupervised Learning.
 
   - Unsupervised learning:
     - You have data without a known structure.
-    - You can find clusters (i.e: clustering) or structure
+    - You can find clusters (i.e: clustering) or associative/structure
     - Lots and lots of clustering analysis
 
+### Linear Regression (One Variable)
+
+- **Hypothesis Function**
+It has a general form `h(x) = theta0 + theta1(x)`.
+This is the general function to general our linear equation.
+
+- **Cost Function**
