@@ -15,7 +15,15 @@
 ### Linear Regression (One Variable)
 
 - **Hypothesis Function**
+
 It has a general form `h(x) = theta0 + theta1(x)`.
 This is the general function to general our linear equation.
 
+
 - **Cost Function**
+This measures the accuracy of the *hypothesis function*. It takes an average of all results of the hypothesis with inputs(`x`s) compared to the actual outputs (`y`s). 
+
+    J(theta0, theta1) = (1/2m)SUM(h(x<sub>i</sub> - y<sub>i</sub>))<sub>2</sub>
+
+Where:
+    (1/2m) => Squared error function or mean squared error. Mean is halved as a convenience of 
