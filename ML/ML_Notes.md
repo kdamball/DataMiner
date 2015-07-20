@@ -25,7 +25,7 @@ This is the general function to general our linear equation.
 
 This measures the accuracy of the *hypothesis function*. It takes an average of all results of the hypothesis with inputs(`x`s) compared to the actual outputs (`y`s). 
 
-    J(theta0, theta1) = (1/2m)SUM(h(x<sub>i</sub> - y<sub>i</sub>))<sub>2</sub>
+    J(theta0, theta1) = (1/2m)SUM(h(x<sup>i</sup> - y<sup>i</sup>))<sup>2</sup>
 
 Where:
 
